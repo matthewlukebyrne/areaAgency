@@ -1,14 +1,41 @@
+<!-- Special Static Helper -->
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+  <!-- Bootstrap (Modified to load static files) -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <!-- Custom (Modified to load static files) -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- Lightbox -->
+  <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
   <title>Area Agency</title>
 </head>
-<body>
-  <!-- JINJA SYNTAX -->
-  <!-- DEFAULT TEMPLATE TAGS FOR DJANGO -->
+<body>  
 
+  <!-- Bring in partial _topbar -->
+  {% include 'partials/_topbar.html' %}
+  <!-- Bring in partial _navbar -->
+  {% include 'partials/_navbar.html' %}
+
+  <!-- JINJA SYNTAX -->
+  <!-- Main Content -->
   {% block content %} {% endblock %}
+
+  <!-- Bring in partial _footer -->
+  {% include 'partials/_footer.html' %}
+
+  
+
+  <!-- Script tags modified to load static pages -->
+  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/lightbox.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
