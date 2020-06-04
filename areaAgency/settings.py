@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
+# Project base directory
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -20,6 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# Security key for production later used in deployment
 SECRET_KEY = '89$7)515x#9s^uzgdsm*rsk&+%4_^-p!s9szub-a72e+x@eq3%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -27,10 +30,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+# Django run a series of Apps
 # Application definition
-
+# IMPORTANT
+# Installed apps go here Artist Agent Admin
+# Pages App
 INSTALLED_APPS = [
+    'pages.apps.PagesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,12 +55,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Strings that represents the URL link which is areaAgency
 ROOT_URLCONF = 'areaAgency.urls'
 
+
+# Templates to display in the browser
+# This templates path will hold all the static folder information HTML CSS JS SASS etc
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,12 +77,15 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'areaAgency.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+
+# Database will be changed and upgraded to POSTGRES
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
