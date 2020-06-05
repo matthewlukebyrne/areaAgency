@@ -1,4 +1,94 @@
-<!-- Using Jinja Syntax to extend using templating onto base.html -->
-{% extends 'base.html' %} {% block content %}
-<h1>About</h1>
+<!-- Jinja Extenstion syntax -->
+{% extends 'base.html' %} 
+
+{% load static %}
+
+{% block content %}
+ <!-- Showcase / Quick link to other Area -->
+  <section id="showcase-inner" class="py-5 text-white bg-dark">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">About Area Agency</h1>
+          <p class="lead">Check our established and well connected agents linking you up with the best acts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <!-- Urls.py uses this -->
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home"></i></a>
+          </li>
+          <li class="breadcrumb-item active"> Agents</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <section id="about" class="py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h2 class="text-center">We Search For The Perfect Moment.</h2>
+          <p class="lead"></p>
+          <img src="{% static 'img/about.jpg' %}" alt="">
+          <p class="mt-4">...</p>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="assets/img/realtors/kyle.jpg" alt="Agent of the month">
+            <div class="card-body">
+              <h5 class="card-title">Agent Of The Month</h5>
+              <h6 class="text-secondary">Kyle Brown</h6>
+              <p class="card-text">Kyle has been with Area since the start. This month his acts have toured the likes of Coachella and Glastonbury.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Once again a simliar process using the views to pass through the context of information and then updating using Jinja syntax to create a for loop and pass through the information from the database -->
+
+<!-- Database information is "agent.value" -->
+
+<!-- Team -->
+<section id="team" class="container">
+    <div class="row text-center">
+      <!-- {% if agents %}
+      {% for agent in agents %} -->
+      <div class="col-md-4">
+        <img src="{{ agent.photo.url }}" alt="" class="mb-5 img-thumbnail">
+        <h4>{{agent.name}}</h4>
+        <p class="text-success">
+          <i class="fas fa-award text-success mb-3"></i> Area Agent since {{agent.hire_date | timesince }}</p>
+        <p>
+          <i class="fas fa-phone"></i> {{agent.phone}} <br>
+          <i class="fas fa-envelope-open"></i> {{agent.email}}</p>
+        <hr>
+      </div>
+      <!-- {% endfor %}
+      {% else %} -->
+      <div class="col-md-12">
+        <p>No Agents Currently Available</p>
+      </div>
+      <!-- {% endif %} -->
+    </div>
+</section>
+
+<!-- Banner -->
+  <section id="work" class="bg-dark text-white text-center">
+    <h2 class="display-4">We Search For You</h2>
+    <h4>Our Agents are always willing to find acts and make your booking experience better. <br> Click below to find your moment.</h4>
+    <hr>
+    <a href="artists.html" class="btn btn-secondary text-white btn-lg">View Our Roster</a>
+  </section>
 {% endblock %}

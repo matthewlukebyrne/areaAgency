@@ -35,7 +35,11 @@ ALLOWED_HOSTS = []
 # IMPORTANT
 # Installed apps go here Artist Agent Admin
 # Pages App
+# Artists App
+# Agents App
 INSTALLED_APPS = [
+    'artists.apps.ArtistsConfig',
+    'agents.apps.AgentsConfig',
     'pages.apps.PagesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -88,8 +92,11 @@ WSGI_APPLICATION = 'areaAgency.wsgi.application'
 # Database will be changed and upgraded to POSTGRES
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'Elipsis_7',
+        'HOST': 'localhost'
     }
 }
 

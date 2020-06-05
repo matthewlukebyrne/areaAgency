@@ -19,5 +19,6 @@ from django.urls import path, include
 # IMPORTANT linked to a view method
 urlpatterns = [
     path('', include('pages.urls')),
+    path('artists/', include('artists.urls')),
     path('admin/', admin.site.urls),
 ]
