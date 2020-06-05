@@ -89,11 +89,12 @@ WSGI_APPLICATION = 'areaAgency.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 
-# Database will be changed and upgraded to POSTGRES
+
+# Updating database to postgres
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
+        'NAME': 'areaCollege',
         'USER': 'postgres',
         'PASSWORD': 'Elipsis_7',
         'HOST': 'localhost'
@@ -143,3 +144,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'areaAgency/static')
 ]
+
+# Media Folder Settings
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
