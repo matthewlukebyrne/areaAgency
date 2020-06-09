@@ -21,7 +21,7 @@ class Artist(models.Model):
     city = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
     description = models.TextField(blank=True)
-    fee = models.IntegerField()
+    price = models.IntegerField()
     accomodation = models.BooleanField(default=True)
     flights = models.BooleanField(blank=True)
     transport = models.BooleanField(default=True)

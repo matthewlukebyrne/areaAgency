@@ -1,5 +1,8 @@
 <!-- Jinja Extenstion syntax -->
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load static %}
+
+<!-- Loads Django "timesince" atrrribute -->
+{% load humanize %}
 
 <!-- Tab Title Load -->
 {% block title %} | Home Area{% endblock %}
@@ -84,20 +87,20 @@
 <!-- Listings -->
 <section id="listings" class="py-5">
   <div class="container">
-    <h3 class="text-center mb-3">Current Touring Acts</h3>
     <div class="row">
-
+      {% if artists %} {% for artist in artists %}
       <!-- Listing 1 -->
-      <div class="col-md-6 col-lg-4 mb-4">
+      <div class="col-md-6 col-lg-4 mb-5">
         <div class="card listing-preview">
-          <img class="card-img-top" src="assets/img/homes/home-1.jpg" alt="">
+          <img class="card-img-top" src="{{ artist.photo_main.url }}" alt="" />
           <div class="card-img-overlay">
             <h2>
-              <span class="badge badge-secondary text-white">€490,000</span>
+              <!-- Humanize feature to create comma with "intcomma" -->
+              <span class="badge badge-secondary text-white">€{{ artist.price | intcomma }}</span>
             </h2>
           </div>
-          <div class="card-body">
-            <div class="listing-heading text-center">
+          <div class="card-body mb-5">
+            <div class="listing-heading">
               <!-- Replacing all static data with dynamic data -->
               <h4 class="text-primary">{{artist.title}}</h4>
             </div>
@@ -132,113 +135,16 @@
               </div>
             </div>
             <hr />
-            <a href="artist.html" class="btn btn-success btn-block">More Info</a>
+            <a href="{% url 'artist' artist.id %}" class="btn btn-success btn-block">More Info</a>
           </div>
         </div>
       </div>
-
-
-      <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card listing-preview">
-          <img class="card-img-top" src="assets/img/homes/home-1.jpg" alt="">
-          <div class="card-img-overlay">
-            <h2>
-              <span class="badge badge-secondary text-white">€490,000</span>
-            </h2>
-          </div>
-          <div class="card-body">
-            <div class="listing-heading text-center">
-              <!-- Replacing all static data with dynamic data -->
-              <h4 class="text-primary">{{artist.title}}</h4>
-            </div>
-            <hr />
-            <div class="row py-2 text-dark">
-              <div class="col-6">
-                <i class="fas fa-user-friends"></i> Party of: {{artist.party}}
-              </div>
-              <div class="col-6">
-                <i class="fas fa-plane"></i> Flights {{artist.flights}}
-              </div>
-            </div>
-            <div class="row py-2 text-dark">
-              <div class="col-6">
-                <i class="fas fa-city"></i> {{artist.city}}
-              </div>
-              <div class="col-6">
-                <i class="fas fa-globe"></i>
-                <a href="{{ artist.site }}"> Artist Website</a>
-              </div>
-            </div>
-            <hr />
-            <div class="row py-2 text-dark">
-              <div class="col-8">
-                <i class="fas fa-user"></i> {{ artist.agent}}
-              </div>
-            </div>
-            <div class="row text-dark pb-4">
-              <div class="col-12 text-success">
-                <!-- Humanize Features of "timesince" in Settings.py -->
-                <i class="fas fa-clock"></i> Member : {{artist.list_date | timesince }}
-              </div>
-            </div>
-            <hr />
-            <a href="artist.html" class="btn btn-success btn-block">More Info</a>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-md-6 col-lg-4 mb-4">
-        <div class="card listing-preview">
-          <img class="card-img-top" src="assets/img/homes/home-1.jpg" alt="">
-          <div class="card-img-overlay">
-            <h2>
-              <span class="badge badge-secondary text-white">€490,000</span>
-            </h2>
-          </div>
-          <div class="card-body">
-            <div class="listing-heading text-center">
-              <!-- Replacing all static data with dynamic data -->
-              <h4 class="text-primary">{{artist.title}}</h4>
-            </div>
-            <hr />
-            <div class="row py-2 text-dark">
-              <div class="col-6">
-                <i class="fas fa-user-friends"></i> Party of: {{artist.party}}
-              </div>
-              <div class="col-6">
-                <i class="fas fa-plane"></i> Flights {{artist.flights}}
-              </div>
-            </div>
-            <div class="row py-2 text-dark">
-              <div class="col-6">
-                <i class="fas fa-city"></i> {{artist.city}}
-              </div>
-              <div class="col-6">
-                <i class="fas fa-globe"></i>
-                <a href="{{ artist.site }}"> Artist Website</a>
-              </div>
-            </div>
-            <hr />
-            <div class="row py-2 text-dark">
-              <div class="col-8">
-                <i class="fas fa-user"></i> {{ artist.agent}}
-              </div>
-            </div>
-            <div class="row text-dark pb-4">
-              <div class="col-12 text-success">
-                <!-- Humanize Features of "timesince" in Settings.py -->
-                <i class="fas fa-clock"></i> Member : {{artist.list_date | timesince }}
-              </div>
-            </div>
-            <hr />
-            <a href="artist.html" class="btn btn-success btn-block">More Info</a>
-          </div>
-        </div>
-      </div>
-
-
+      {% endfor %} '
+      {% else %}
+        <h3 class="text-center">No Roster Availible</h3>
+      {% endif %}
     </div>
+  </div>
 </section>
 
 <section id="services" class="py-5 bg-secondary text-white">

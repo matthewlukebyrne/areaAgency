@@ -1,70 +1,72 @@
 <!-- Jinja Extenstion syntax -->
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% load static %}
 
 {% block content %}
- <!-- Showcase / Quick link to other Area -->
-  <section id="showcase-inner" class="py-5 text-white bg-dark">
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h1 class="display-4">About Area Agency</h1>
-          <p class="lead">Check our established and well connected agents linking you up with the best acts.</p>
-        </div>
+<!-- Breadcrumb -->
+<!-- <section id="bc" class="mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"> -->
+          <!-- Urls.py uses this -->
+          <!-- <a href="{% url 'index' %}">
+            <i class="fas fa-home"></i></a>
+        </li>
+        <li class="breadcrumb-item active"> Agents</li>
+      </ol>
+    </nav>
+  </div>
+</section> -->
+
+<section id="about" class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 text-center">
+        <img src="{% static 'img/about.gif' %}" alt="">
+        <p class="mt-5">Area Agency is an artist management company based in Los Angeles, California. With a history of
+          working with international acts, we have developed a reputation as an artist-friendly company whose main focus
+          is always on providing high quality performers with a platform to develop their careers and to assist them in
+          reaching a larger audience internationally. <br>
+          <hr>
+          Our approach to every artist we work with is to offer a broad representation service which covers each element
+          of the artist’s recording and performing career including executive production of the recording process,
+          negotiation and development of relationships with record labels, digital distributors, publishing companies,
+          and booking agents worldwide.
       </div>
-    </div>
-  </section>
-
-  <!-- Breadcrumb -->
-  <section id="bc" class="mt-3">
-    <div class="container">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <!-- Urls.py uses this -->
-            <a href="{% url 'index' %}">
-              <i class="fas fa-home"></i></a>
-          </li>
-          <li class="breadcrumb-item active"> Agents</li>
-        </ol>
-      </nav>
-    </div>
-  </section>
-
-  <section id="about" class="py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <h2 class="text-center">We Search For The Perfect Moment.</h2>
-          <p class="lead"></p>
-          <img src="{% static 'img/about.jpg' %}" alt="">
-          <p class="mt-4">...</p>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img class="card-img-top" src="assets/img/realtors/kyle.jpg" alt="Agent of the month">
-            <div class="card-body">
-              <h5 class="card-title">Agent Of The Month</h5>
-              <h6 class="text-secondary">Kyle Brown</h6>
-              <p class="card-text">Kyle has been with Area since the start. This month his acts have toured the likes of Coachella and Glastonbury.
-              </p>
-            </div>
+      <div class="col-md-4">
+        <!-- Checking for agent of the month -->
+        {% if mvp_agents %}
+        {% for agent in mvp_agents %}
+        <div class="card">
+          <img class="card-img-top img-thumbnail" src="{{ agent.photo.url }}" alt="Seller of the month">
+          <div class="card-body">
+            <h5 class="card-title">Agent Of The Month</h5>
+            <h6 class="text-secondary">{{ agent.name }}</h6>
+            <p class="card-text">{{agent.description}}
+            </p>
           </div>
         </div>
+
+        {% endfor %}
+        {% endif %}
+
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Once again a simliar process using the views to pass through the context of information and then updating using Jinja syntax to create a for loop and pass through the information from the database -->
+<!-- Once again a simliar process using the views to pass through the context of information and then updating using Jinja syntax to create a for loop and pass through the information from the database -->
 
 <!-- Database information is "agent.value" -->
 
 <!-- Team -->
-<section id="team" class="container">
+<section id="team" class="py-5">
+  <div class="container">
     <div class="row text-center">
-      <!-- {% if agents %}
-      {% for agent in agents %} -->
+      {% if agents %}
+      {% for agent in agents %}
       <div class="col-md-4">
         <img src="{{ agent.photo.url }}" alt="" class="mb-5 img-thumbnail">
         <h4>{{agent.name}}</h4>
@@ -75,20 +77,13 @@
           <i class="fas fa-envelope-open"></i> {{agent.email}}</p>
         <hr>
       </div>
-      <!-- {% endfor %}
-      {% else %} -->
+      {% endfor %}
+      {% else %}
       <div class="col-md-12">
         <p>No Agents Currently Available</p>
       </div>
-      <!-- {% endif %} -->
+      {% endif %}
     </div>
+  </div>
 </section>
-
-<!-- Banner -->
-  <section id="work" class="bg-dark text-white text-center">
-    <h2 class="display-4">We Search For You</h2>
-    <h4>Our Agents are always willing to find acts and make your booking experience better. <br> Click below to find your moment.</h4>
-    <hr>
-    <a href="artists.html" class="btn btn-secondary text-white btn-lg">View Our Roster</a>
-  </section>
 {% endblock %}

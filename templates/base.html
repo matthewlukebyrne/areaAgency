@@ -17,6 +17,8 @@
 </head>
 <body>  
 
+    <!-- Bring in partial _topbar -->
+  {% include 'partials/_topbar.html' %}
   
   <!-- Bring in partial _navbar -->
   {% include 'partials/_navbar.html' %}
@@ -31,9 +33,6 @@
 
   <!-- Bring in partial _footer -->
   {% include 'partials/_footer.html' %}
-
-  <!-- Bring in partial _topbar -->
-  {% include 'partials/_topbar.html' %}
 
   <!-- Script tags modified to load static pages -->
   <script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
