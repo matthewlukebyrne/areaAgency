@@ -10,7 +10,7 @@ country: STR
 region: STR
 areacode: STR
 description: TEXT
-fee: INT
+price: INT
 hotel: BOOLEAN
 flights: BOOLEAN 
 transportation: BOOLEAN

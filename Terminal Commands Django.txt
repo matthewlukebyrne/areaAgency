@@ -1,0 +1,35 @@
+python manage.py runserver
+# runs the server
+
+# migrates data
+python manage.py runmigrations
+
+python manage.py startapp pages
+# Creates a new pages app
+
+python manage.py collectstatic
+# shows a static folder in the root
+
+python manage.py startapp artists
+# created a artists app (needs a urls.py)
+
+python manage.py startapp agents
+# creates a agents app (needs a urls.py)
+
+pip install psycopg2
+# Database adapter
+
+python manage.py migrate
+# Check postgres database to see if it's active and running
+
+python manage.py makemigrations
+# Attempt to enter fields into models and then pass them Postgres
+
+python manage.py sqlmigrate artists 001
+# Shows in command terminal the migration of data
+
+# Migration 
+python manage.py migrate --run-syncdb
+
+# Sorts out the PyLinter
+pip install pylint-django
