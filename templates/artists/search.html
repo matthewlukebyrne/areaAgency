@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% block title %} | Search Area{% endblock %}
+
+{% block content %}
+<section id="showcase-inner" class="showcase-search text-white py-5 bg-dark">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <form action="{% url 'search' %}">
+          <!-- Keyword and City Search-->
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <input type="text" name="keywords" class="form-control" placeholder="Keywords"
+                value="{{values.keywords}}">
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <input type="text" name="city" class="form-control" placeholder="City" value="{{values.city}}">
+            </div>
+          </div>
+          <!-- Artist Search -->
+          <div class="form-row">
+            <div class="col-md-6 mb-3">
+              <select name="title" class="form-control">
+                <option selected="true" disabled="enabled">Talent (All)</option>
+                {% for key, value in artists_choices.items %}
+                <!-- Messy code for keeping values in search -->
+                <option value="{{key}}" {% if key == values.title %} selected {% endif %}>{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <!-- Fee Search with Loop -->
+            <div class="col-md-6 mb-3">
+              <select name="price" class="form-control">
+                <option selected="true" disabled="disabled">Max Fee (All)</option>
+                {% for key, value in price_choices.items %}
+                <!-- Messy code for keeping values in search -->
+                <option value="{{key}}" {% if key == values.price %} selected {% endif %}>
+                  {{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'index' %}">
+            <i class="fas fa-home"></i></a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="{% url 'artists' %}">Browse Listings</a>
+        </li>
+        <li class="breadcrumb-item active"> Search Results</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+<br>
+<!-- Alerts Error Function -->
+{% include 'partials/_alerts.html' %}
+
+<!-- Listings -->
+<section id="listings" class="py-4">
+  <div class="container">
+    <div class="row">
+
+      {% if artists %} {% for artist in artists %}
+      <!-- Listing 1 -->
+      <div class="col-md-6 col-lg-4 mb-5">
+        <div class="card listing-preview">
+          <img class="card-img-top" src="{{ artist.photo_main.url }}" alt="" />
+          <div class="card-img-overlay">
+            <h2>
+              <!-- Humanize feature to create comma with "intcomma" -->
+              <span class="badge badge-secondary text-white">€{{ artist.price | intcomma }}</span>
+            </h2>
+          </div>
+          <div class="card-body">
+            <div class="listing-heading">
+              <!-- Replacing all static data with dynamic data -->
+              <h4 class="text-primary">{{artist.title}}</h4>
+            </div>
+            <hr />
+            <div class="row py-2 text-dark">
+              <div class="col-6">
+                <i class="fas fa-user-friends"></i> Party of: {{artist.party}}
+              </div>
+              <div class="col-6">
+                <i class="fas fa-plane"></i> Flights {{artist.flights}}
+              </div>
+            </div>
+            <div class="row py-2 text-dark">
+              <div class="col-6">
+                <i class="fas fa-city"></i> {{artist.city}}
+              </div>
+              <div class="col-6">
+                <i class="fas fa-globe"></i>
+                <a href="{{ artist.site }}"> Artist Website</a>
+              </div>
+            </div>
+            <hr />
+            <div class="row py-2 text-dark">
+              <div class="col-8">
+                <i class="fas fa-user"></i> {{ artist.agent}}
+              </div>
+            </div>
+            <div class="row text-dark pb-4">
+              <div class="col-12 text-success">
+                <!-- Humanize Features of "timesince" in Settings.py -->
+                <i class="fas fa-clock"></i> Member : {{artist.list_date | timesince }}
+              </div>
+            </div>
+            <hr />
+            <a href="{% url 'artist' artist.id %}" class="btn btn-success btn-block">More Info</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %} {% else %}
+      <div class="col-md-12 text-center">
+        <div class="lead">Please Search Again!</div>
+        {% endif %}
+
+      </div>
+    </div>
+</section>
+{% endblock %}

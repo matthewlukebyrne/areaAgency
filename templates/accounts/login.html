@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} | Login Area{% endblock %}
+
+{% block content %}
+<section id="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto pt-5">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <h4>
+                            <i class="fas fa-sign-in-alt"></i> Login</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- Alerts Error Function -->
+                        <!-- Post Request -->
+                        <form action="{% url 'login' %}" method="POST">
+                            <!-- Django Forgery Token -->
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password2">Password</label>
+                                <input type="password" name="password" class="form-control" required>
+                            </div>
+
+                            <input type="submit" value="Login" class="btn btn-dark btn-block">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

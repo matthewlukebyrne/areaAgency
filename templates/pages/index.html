@@ -1,0 +1,89 @@
+<!-- Jinja Extenstion syntax -->
+{% extends 'base.html' %} {% load static %}
+
+<!-- Loads Django "timesince" atrrribute -->
+{% load humanize %}
+
+<!-- Tab Title Load -->
+{% block title %} | Home Area {% endblock %}
+
+{% block content %}
+<!-- Showcase -->
+<img src="{% static 'img/showcase.jpg' %}" alt="" />
+<section id="showcase">
+  <div class="container text-center bg-dark">
+    <div class="home-search p-5">
+      <div class="overlay p-5">
+        <h1 class="display-4 mb-4">
+          This will be the front end. <br> What the user sees.
+        </h1>
+        <p class="lead">World class performers ready to be booked at the touch of your fingertips from all over the
+          world. <br> We are Area Agency.</p>
+        <div class="search">
+          <form action="{% url 'search' %}">
+            <!-- Keyword and City Search-->
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <input type="text" name="keywords" class="form-control" placeholder="Keywords"
+                  value="{{values.keywords}}">
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <input type="text" name="city" class="form-control" placeholder="City" value="{{values.city}}">
+              </div>
+            </div>
+            <!-- Artist Search -->
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <select name="title" class="form-control">
+                  <option selected="true" disabled="enabled">Talent (All)</option>
+                  {% for key, value in artists_choices.items %}
+                  <!-- Messy code for keeping values in search -->
+                  <option value="{{key}}" {% if key == values.title %} selected {% endif %}>{{ value }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <!-- Fee Search -->
+              <div class="col-md-6 mb-3">
+                <select name="price" class="form-control">
+                  <option selected="true" disabled="disabled">Max Fee (All)</option>
+                  {% for key, value in price_choices.items %}
+                  <!-- Messy code for keeping values in search -->
+                  <option value="{{key}}" {% if key == values.price %} selected {% endif %}>{{ value }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+          </form>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section id="services" class="py-5 bg-secondary text-white">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-4">
+        <i class="fas fa-user-nurse fa-4x mr-4"></i>
+        <hr>
+        <h3></h3>
+        <div class="lead">Our response to COVID and the future.</div>
+      </div>
+      <div class="col-md-4">
+        <i class="fas fa-users fa-4x mr-4"></i>
+        <hr>
+        <h3></h3>
+        <p class="lead">A stellar line up of acts.</p>
+      </div>
+      <div class="col-md-4">
+        <i class="fas fa-file-contract fa-4x mr-4"></i>
+        <hr>
+        <h3></h3>
+        <p class="lead text-center">Contracts ready at your disposal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

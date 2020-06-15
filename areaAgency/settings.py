@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
+# Project base directory
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -20,6 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# Security key for production later used in deployment
 SECRET_KEY = '89$7)515x#9s^uzgdsm*rsk&+%4_^-p!s9szub-a72e+x@eq3%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -27,16 +30,25 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+# Django run a series of Apps
 # Application definition
-
+# IMPORTANT
+# Installed apps go here Artist Agent Admin
+# Pages App
+# Artists App
+# Agents App
 INSTALLED_APPS = [
+    'artists.apps.ArtistsConfig',
+    'agents.apps.AgentsConfig',
+    'pages.apps.PagesConfig',
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -49,12 +61,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Strings that represents the URL link which is areaAgency
 ROOT_URLCONF = 'areaAgency.urls'
 
+
+# Templates to display in the browser
+# This templates path will hold all the static folder information HTML CSS JS SASS etc
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,16 +83,23 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'areaAgency.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+
+
+# Updating database to postgres
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'areaCollege',
+        'USER': 'postgres',
+        'PASSWORD': 'Elipsis_7',
+        'HOST': 'localhost'
     }
 }
 
@@ -116,5 +139,20 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+# This is place to declare your static files in the main areaAgency folder
 
+STATIC_ROOT= os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'areaAgency/static')
+]
+
+# Media Folder Settings
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+# Message Alerts (seperate parital for alerts using the default apps)
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}

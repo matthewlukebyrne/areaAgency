@@ -1,0 +1,17 @@
+<!-- Backend admin area of the site -->
+
+{% extends 'admin/base.html' %}
+{% load static %}
+
+<!-- Extending the logo branding for Area Agency -->
+{% block branding %}
+<h1 id="head">
+    <img src="{% static 'img/logo.png' %}" alt="Area Agency" height="80" width="80" class="brand_img">
+</h1>
+{% endblock %}
+
+<!-- More Jinja Stylage - Extra Style for CSS stylesheet -->
+<!-- Admin CSS styling -->
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock %}
