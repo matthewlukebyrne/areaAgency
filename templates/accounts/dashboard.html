@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %} | Dashboard Area{% endblock %}
+
+{% block content %}
+<section id="showcase-inner" class="py-5 text-white bg-dark">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1 class="display-4">Area Dashboard</h1>
+        <p class="lead">Manage Your Area. <br> View your acts booked on this page.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<br>
+
+<!-- Alert for Login -->
+{% include 'partials/_alerts.html' %}
+
+<!-- Breadcrumb -->
+<section id="bc" class="mt-3">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'index' %}">
+            <i class="fas fa-home"></i></a>
+        </li>
+        <li class="breadcrumb-item active"> Area Dashboard</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<section id="dashboard" class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>{{user.first_name}} {{user.last_name}}</h1>
+        {% if contacts %}
+        <div class="lead">Here are the Area acts you have been enquiring about!</div>
+        <br>
+        <br>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID-Number</th>
+              <th scope="col">Artist</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for contact in contacts %}
+            <tr>
+              <td>{{contact.id}}</td>
+              <td>{{contact.title}}</td>
+              <td>
+                <a class="btn btn-light" href="{% url 'artist' contact.artist_id %}">Artist</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <div class="col-md-12 text-center">
+          <div class="lead">You have no current Bookings with Area.</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}
