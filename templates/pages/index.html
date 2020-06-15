@@ -9,163 +9,79 @@
 
 {% block content %}
 <!-- Showcase -->
+<img src="{% static 'img/showcase.jpg' %}" alt="" />
 <section id="showcase">
   <div class="container text-center bg-dark">
     <div class="home-search p-5">
       <div class="overlay p-5">
         <h1 class="display-4 mb-4">
-          Find the Best Talent <br> The Right Talent for you.
+          This will be the front end. <br> What the user sees.
         </h1>
         <p class="lead">World class performers ready to be booked at the touch of your fingertips from all over the
           world. <br> We are Area Agency.</p>
         <div class="search">
-          <form action="search.html">
-            <!-- Form Row 1 -->
+          <form action="{% url 'search' %}">
+            <!-- Keyword and City Search-->
             <div class="form-row">
-              <div class="col-md-4 mb-3">
-                <label class="sr-only">Keywords</label>
-                <input type="text" name="keywords" class="form-control" placeholder="Keywords (Artists, Acts etc)">
+              <div class="col-md-6 mb-3">
+                <input type="text" name="keywords" class="form-control" placeholder="Keywords"
+                  value="{{values.keywords}}">
               </div>
 
-              <div class="col-md-4 mb-3">
-                <label class="sr-only">City</label>
-                <input type="text" name="city" class="form-control" placeholder="City">
+              <div class="col-md-6 mb-3">
+                <input type="text" name="city" class="form-control" placeholder="City" value="{{values.city}}">
               </div>
-
-              <div class="col-md-4 mb-3">
-                <label class="sr-only">Agents</label>
-                <select name="state" class="form-control">
-                  <option selected="true" disabled="disabled">Agents (All)</option>
-                  <option value="">Agent 1</option>
-                  <option value="">Agent 2</option>
-                  <option value="">Agent 3</option>
+            </div>
+            <!-- Artist Search -->
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <select name="title" class="form-control">
+                  <option selected="true" disabled="enabled">Talent (All)</option>
+                  {% for key, value in artists_choices.items %}
+                  <!-- Messy code for keeping values in search -->
+                  <option value="{{key}}" {% if key == values.title %} selected {% endif %}>{{ value }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <!-- Fee Search -->
+              <div class="col-md-6 mb-3">
+                <select name="price" class="form-control">
+                  <option selected="true" disabled="disabled">Max Fee (All)</option>
+                  {% for key, value in price_choices.items %}
+                  <!-- Messy code for keeping values in search -->
+                  <option value="{{key}}" {% if key == values.price %} selected {% endif %}>{{ value }}</option>
+                  {% endfor %}
                 </select>
               </div>
             </div>
-            <!-- Form Row 2 -->
-            <div class="form-row">
-              <div class="col-md-6 mb-3">
-                <label class="sr-only">Roster</label>
-                <select name="bedrooms" class="form-control">
-                  <option selected="true" disabled="disabled">Roster (All)</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-              </div>
-              <div class="col-md-6 mb-3">
-                <select name="price" class="form-control" id="type">
-                  <option selected="true" disabled="disabled">Max Fee (Any)</option>
-                  <option value="100000">$100,000</option>
-                  <option value="200000">$200,000</option>
-                  <option value="300000">$300,000</option>
-                  <option value="400000">$400,000</option>
-                  <option value="500000">$500,000</option>
-                  <option value="600000">$600,000</option>
-                  <option value="700000">$700,000</option>
-                  <option value="800000">$800,000</option>
-                  <option value="900000">$900,000</option>
-                  <option value="1000000">$1M+</option>
-                </select>
-              </div>
-            </div>
-            <button class="btn btn-secondary btn-block mt-4" type="submit">Submit</button>
+            <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
           </form>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- Listings -->
-<section id="listings" class="py-5">
-  <div class="container">
-    <div class="row">
-      {% if artists %} {% for artist in artists %}
-      <!-- Listing 1 -->
-      <div class="col-md-6 col-lg-4 mb-5">
-        <div class="card listing-preview">
-          <img class="card-img-top" src="{{ artist.photo_main.url }}" alt="" />
-          <div class="card-img-overlay">
-            <h2>
-              <!-- Humanize feature to create comma with "intcomma" -->
-              <span class="badge badge-secondary text-white">€{{ artist.price | intcomma }}</span>
-            </h2>
-          </div>
-          <div class="card-body mb-5">
-            <div class="listing-heading">
-              <!-- Replacing all static data with dynamic data -->
-              <h4 class="text-primary">{{artist.title}}</h4>
-            </div>
-            <hr />
-            <div class="row py-2 text-dark">
-              <div class="col-6">
-                <i class="fas fa-user-friends"></i> Party of: {{artist.party}}
-              </div>
-              <div class="col-6">
-                <i class="fas fa-plane"></i> Flights {{artist.flights}}
-              </div>
-            </div>
-            <div class="row py-2 text-dark">
-              <div class="col-6">
-                <i class="fas fa-city"></i> {{artist.city}}
-              </div>
-              <div class="col-6">
-                <i class="fas fa-globe"></i>
-                <a href="{{ artist.site }}"> Artist Website</a>
-              </div>
-            </div>
-            <hr />
-            <div class="row py-2 text-dark">
-              <div class="col-8">
-                <i class="fas fa-user"></i> {{ artist.agent}}
-              </div>
-            </div>
-            <div class="row text-dark pb-4">
-              <div class="col-12 text-success">
-                <!-- Humanize Features of "timesince" in Settings.py -->
-                <i class="fas fa-clock"></i> Member : {{artist.list_date | timesince }}
-              </div>
-            </div>
-            <hr />
-            <a href="{% url 'artist' artist.id %}" class="btn btn-success btn-block">More Info</a>
-          </div>
-        </div>
-      </div>
-      {% endfor %} '
-      {% else %}
-      <div class="lead m-auto">No Roster Currently.</div>
-      {% endif %}
-    </div>
-  </div>
 </section>
 
 <section id="services" class="py-5 bg-secondary text-white">
-  <div class="row text-center">
-    <div class="col-md-4">
-      <i class="fas fa-user-nurse fa-4x mr-4"></i>
-      <hr>
-      <h3></h3>
-      <div class="lead">Our response to COVID and the future.</div>
-    </div>
-    <div class="col-md-4">
-      <i class="fas fa-users fa-4x mr-4"></i>
-      <hr>
-      <h3></h3>
-      <p class="lead">A stellar line up of acts.</p>
-    </div>
-    <div class="col-md-4">
-      <i class="fas fa-file-contract fa-4x mr-4"></i>
-      <hr>
-      <h3></h3>
-      <p class="lead text-center">Contracts ready at your disposal.</p>
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-4">
+        <i class="fas fa-user-nurse fa-4x mr-4"></i>
+        <hr>
+        <h3></h3>
+        <div class="lead">Our response to COVID and the future.</div>
+      </div>
+      <div class="col-md-4">
+        <i class="fas fa-users fa-4x mr-4"></i>
+        <hr>
+        <h3></h3>
+        <p class="lead">A stellar line up of acts.</p>
+      </div>
+      <div class="col-md-4">
+        <i class="fas fa-file-contract fa-4x mr-4"></i>
+        <hr>
+        <h3></h3>
+        <p class="lead text-center">Contracts ready at your disposal.</p>
+      </div>
     </div>
   </div>
 </section>

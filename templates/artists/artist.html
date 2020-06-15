@@ -1,1 +1,193 @@
-<h1>This will be the single Artist Page when we load everything from Static!</h1>
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+<!-- Dynamic Title on Load -->
+{% block title %} {{artist.title}} {% endblock %}
+
+{% block content %}
+<!-- Top Showcase -->
+<section id="showcase-inner" class="py-5 text-white bg-dark">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1 class="display-4">{{ artist.title }}</h1>
+        <p class="lead">
+          <i class="fas fa-map-marker"></i> {{artist.city}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Breadcrumb -->
+  <section id="bc" class="mt-3">
+  <div class="container">
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'index' %}"> <i class="fas fa-home"></i></a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="{% url 'artists' %}">Listings</a>
+        </li>
+        <li class="breadcrumb-item active">{{artist.title}}</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+ <!-- Listing -->
+<section id="listing" class="py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <!-- Home Main Image -->
+        <img src="{{ artist.photo_main.url }}" alt="" class="img-main img-fluid mb-3">
+        <!-- Thumbnails -->
+        <div class="row mb-5 thumbs">
+          <!-- Photos wrapped up in if statement to prevent database crash find images -->
+          {% if artist.photo_1 %}
+          <div class="col-md-2">
+            <a href="{{ artist.photo_1.url }}" data-lightbox="home-images">
+              <img src="{{ artist.photo_1.url }}" alt="" class="img-fluid">
+            </a>
+          </div>
+          {% endif %}
+          {% if artist.photo_2 %}
+          <div class="col-md-2">
+            <a href="{{ artist.photo_2.url }}" data-lightbox="home-images">
+              <img src="{{ artist.photo_2.url }}" alt="" class="img-fluid">
+            </a>
+          </div>
+          {% endif %}
+          {% if artist.photo_3 %}
+          <div class="col-md-2">
+            <a href="{{ artist.photo_3.url }}" data-lightbox="home-images">
+              <img src="{{ artist.photo_3.url }}" alt="" class="img-fluid">
+            </a>
+          </div>
+          {% endif %}
+          {% if artist.photo_4 %}
+          <div class="col-md-2">
+            <a href="{{ artist.photo_4.url }}" data-lightbox="home-images">
+              <img src="{{ artist.photo_4.url }}" alt="" class="img-fluid">
+            </a>
+          </div>
+          {% endif %}
+          {% if artist.photo_5 %}
+          <div class="col-md-2">
+            <a href="{{ artist.photo_5.url }}" data-lightbox="home-images">
+              <img src="{{ artist.photo_5.url }}" alt="" class="img-fluid">
+            </a>
+          </div>
+          {% endif %}
+          {% if artist.photo_6 %}
+          <div class="col-md-2">
+            <a href="{{ artist.photo_6.url }}" data-lightbox="home-images">
+              <img src="{{ artist.photo_6.url }}" alt="" class="img-fluid">
+            </a>
+          </div>
+          {% endif %}
+        </div>
+
+
+
+        <!-- Fields -->
+        <div class="row mb-5 fields">
+          <div class="col-md-12">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item text-secondary">
+                <i class="fas fa-money-bill-alt"></i> Fee:
+                <!-- Humanize on the comma! -->
+                <span class="float-right">€{{artist.fee | intcomma }}</span>
+              </li>
+              <li class="list-group-item text-secondary">
+                <i class="fas fa-user-friends"></i> Party of:
+                <span class="float-right">{{artist.party}}</span>
+              </li>
+              <li class="list-group-item text-secondary">
+                <i class="fas fa-plane"></i> Flights:
+                <span class="float-right">{{artist.flights}}</span>
+              </li>
+              <li class="list-group-item text-secondary">
+                <i class="fas fa-city"></i> City:
+                <span class="float-right">{{artist.city}}</span>
+              </li>
+              <li class="list-group-item text-secondary">
+                <i class="fas fa-list"></i> Rider Information:
+                <span class="float-right">{{artist.rider}}</span>
+              </li>
+              <li class="list-group-item text-secondary">
+                <a href="{{ artist.site }}">
+                  <i class="fas fa-globe"> Artist Website</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="row mb-5">
+          <div class="col-md-12">
+            {{artist.description}}
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-3">
+        <button class="btn-primary btn-block btn-lg mb-2 rounded" data-toggle="modal" data-target="#inquiryModal">Make
+          An Inquiry</button>
+        <div class="card mb-5">
+          <img class="card-img-top" src="{{ artist.agent.photo.url }}" alt="agent_info">
+          <div class="card-body ">
+            <h5 class="card-title">Agent</h5>
+            <h6 class="text-secondary">{{artist.agent}}</h6>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Inquiry Modal to Book your Area Agent Act -->
+  <div class="modal fade" id="inquiryModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="inquiryModalLabel">Make Area Booking</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="property_name" class="col-form-label">Artist:</label>
+              <input type="text" name="listing" class="form-control" value="">
+            </div>
+            <div class="form-group">
+              <label for="name" class="col-form-label">Name:</label>
+              <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="col-form-label">Email:</label>
+              <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="phone" class="col-form-label">Phone:</label>
+              <input type="text" name="phone" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="message" class="col-form-label">Information:</label>
+              <textarea name="message" class="form-control"></textarea>
+            </div>
+            <hr>
+            <input type="submit" value="Send" class="btn btn-block btn-secondary">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
