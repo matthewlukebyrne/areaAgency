@@ -1,38 +1,46 @@
 /* This page is for the Admin Stylings in Django instead of using the default colors */
 
 #header {
-    height: 100px;
-    background: #484e53;
-    color: #fff;
+	height: 100px;
+	background: #484e53;
+	color: #fff;
 }
 
 #branding h1 {
-    color: #fff;
+	color: #fff;
 }
 
 a:link,
 a:visited {
-    color: #333;
+	color: #333;
 }
 
 div.breadcrumbs {
-    background: #209374;
-    color: #fff;
+	background: #209374;
+	color: #fff;
 }
 
-.module h2, .module caption, .inline-group h2 {
-    background: #209374;
+.module h2,
+.module caption,
+.inline-group h2 {
+	background: #209374;
 }
 
-.button, input[type=submit], input[type=button], .submit-row input, a.button {
-    background: #209374;
+.button,
+input[type=submit],
+input[type=button],
+.submit-row input,
+a.button {
+	background: #209374;
 }
 
-.button.default, input[type=submit].default, .submit-row input.default {
-    background: #209374;
+.button.default,
+input[type=submit].default,
+.submit-row input.default {
+	background: #209374;
 }
 
 .selector-chosen h2 {
-    background: #209374 !important;
-    color: #fff;
+	background: #209374 !important;
+	color: #fff;
 }

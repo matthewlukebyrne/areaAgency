@@ -21,4 +21,5 @@ class ArtistAdmin(admin.ModelAdmin):
 # Pagination
     list_per_page = 25
 
+
 admin.site.register(Artist, ArtistAdmin)

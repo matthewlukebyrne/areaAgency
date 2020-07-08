@@ -2,7 +2,7 @@ python manage.py runserver
 # runs the server
 
 # migrates data
-python manage.py runmigrations
+python manage.py runmigrations # transfer the model data over to database
 
 python manage.py startapp pages
 # Creates a new pages app
@@ -16,14 +16,14 @@ python manage.py startapp artists
 python manage.py startapp agents
 # creates a agents app (needs a urls.py)
 
-pip install psycopg2
+pip install psycopg2 
 # Database adapter
 
 python manage.py migrate
 # Check postgres database to see if it's active and running
 
 python manage.py makemigrations
-# Attempt to enter fields into models and then pass them Postgres
+# Attempt to enter fields into models and then pass them Postgres (Database)
 
 python manage.py sqlmigrate artists 001
 # Shows in command terminal the migration of data

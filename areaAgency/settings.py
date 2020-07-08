@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+from django.contrib.messages import constants as messages
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'agents.apps.AgentsConfig',
     'pages.apps.PagesConfig',
     'accounts.apps.AccountsConfig',
+    'contacts.apps.ContactsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -89,7 +91,6 @@ WSGI_APPLICATION = 'areaAgency.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
 
 
 # Updating database to postgres
@@ -141,7 +142,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 # This is place to declare your static files in the main areaAgency folder
 
-STATIC_ROOT= os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'areaAgency/static')
@@ -152,7 +153,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # Message Alerts (seperate parital for alerts using the default apps)
-from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+# GMAIL Email Configigurations
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'matthewlukebyrne@gmail.com'
+EMAIL_HOST_PASSWORD = 'Elipsis_7'
+EMAIL_USE_TLS = True

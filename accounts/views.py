@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
+from contacts.models import Contact
 
 # Create your views here.
 
@@ -69,9 +70,15 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
       auth.logout(request)
-      messages.success(request, 'You are now logged out.')
-      return redirect('register')
+      return redirect('index')
 
 
 def dashboard(request):
-    return render(request, 'accounts/dashboard.html')
+    # User to contact model to order by the user id (most recent first by user)
+    user_contacts = Contact.objects.order_by('-contact_date').filter(user_id=request.user.id)
+    
+    # Pass through context below
+    context = {
+        'contacts' : user_contacts
+    }
+    return render(request, 'accounts/dashboard.html', context)
