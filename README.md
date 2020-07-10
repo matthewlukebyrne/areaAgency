@@ -1,12 +1,6 @@
 # areaAgency
 College project version for Area Agency system.
 
-![area-agency](final_images/5.PNG)
-![area-agency](final_images/4.PNG)
-![area-agency](final_images/2.PNG)
-![area-agency](final_images/9.PNG)
-
-
 # Documentation
 https://www.djangoproject.com/ <br>
 https://jinja.palletsprojects.com/en/2.11.x/
@@ -49,3 +43,10 @@ Coming! <br>
 https://www.nginx.com/ <br>
 https://www.digitalocean.com/ <br>
 https://gunicorn.org/ <br>
+
+# Image Bank
+
+![area-agency](final_images/5.PNG)
+![area-agency](final_images/4.PNG)
+![area-agency](final_images/2.PNG)
+![area-agency](final_images/9.PNG)
