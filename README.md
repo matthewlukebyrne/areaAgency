@@ -40,6 +40,6 @@ SCSS Files <br>
 
 # Deployment Stage 
 Coming!
-https://www.nginx.com/
-https://www.digitalocean.com/
-https://gunicorn.org/
+https://www.nginx.com/ <br>
+https://www.digitalocean.com/ <br>
+https://gunicorn.org/ <br>
