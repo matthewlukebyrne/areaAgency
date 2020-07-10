@@ -53,22 +53,22 @@
 
 <!-- Breadcrumb -->
 <section id="bc" class="mt-3">
-  <div class="container">
+  <div class="container rounded">
     <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
+      <ol class="breadcrumb bg-white">
         <li class="breadcrumb-item">
           <a href="{% url 'index' %}">
-            <i class="fas fa-home"></i></a>
+            <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></a>
         </li>
         <li class="breadcrumb-item">
-          <a href="{% url 'artists' %}">Browse Listings</a>
+          <a href="{% url 'artists' %}">Browse Roster</a>
         </li>
-        <li class="breadcrumb-item active"> Search Results</li>
+        <li class="breadcrumb-item active"> Search Roster</li>
       </ol>
     </nav>
   </div>
 </section>
-<br>
+
 <!-- Alerts Error Function -->
 {% include 'partials/_alerts.html' %}
 
@@ -80,7 +80,7 @@
       {% if artists %} {% for artist in artists %}
       <!-- Listing 1 -->
       <div class="col-md-6 col-lg-4 mb-5">
-        <div class="card listing-preview">
+        <div class="card listing-preview mb-5">
           <img class="card-img-top" src="{{ artist.photo_main.url }}" alt="" />
           <div class="card-img-overlay">
             <h2>
@@ -107,20 +107,20 @@
                 <i class="fas fa-city"></i> {{artist.city}}
               </div>
               <div class="col-6">
-                <i class="fas fa-globe"></i>
-                <a href="{{ artist.site }}"> Artist Website</a>
+                <i class="fa fa-spotify"></i>
+                <a href="{{ artist.site }}"> Spotify</a>
               </div>
             </div>
             <hr />
             <div class="row py-2 text-dark">
               <div class="col-8">
-                <i class="fas fa-user"></i> {{ artist.agent}}
+                <i class="fas fa-user"></i> Agent:{{ artist.agent}}
               </div>
             </div>
             <div class="row text-dark pb-4">
               <div class="col-12 text-success">
                 <!-- Humanize Features of "timesince" in Settings.py -->
-                <i class="fas fa-clock"></i> Member : {{artist.list_date | timesince }}
+                <i class="fas fa-clock"></i> Area Artist since : {{artist.list_date | timesince }}
               </div>
             </div>
             <hr />

@@ -37,8 +37,8 @@ def register(request):
                     # messages.success(request, 'You are now logged in')
                     # return redirect('index')
                     user.save()
-                    messages.success(request, 'Successfully Registered! Please search!')
-                    return redirect('search')
+                    messages.success(request, 'Successfully Registered.')
+                    return redirect('login')
 
         # Indentation in Python a bit tricky be careful!
         else:
@@ -58,8 +58,11 @@ def login(request):
 
         # Login in using login method
         if user is not None:
-           auth.login(request, user)
-           return redirect('index')
+            auth.login(request, user)
+            messages.success(request, 'Welcome Back!')
+            return redirect('search')
+
+
         else:
             messages.error(request, 'Invalid Credentials.')
             return redirect('login')
@@ -67,10 +70,13 @@ def login(request):
         return render(request, 'accounts/login.html')
 
 
+
 def logout(request):
     if request.method == 'POST':
-      auth.logout(request)
-      return redirect('index')
+        auth.logout(request)
+        messages.error(request, 'Logged Out User')
+        return redirect('register')
+      
 
 
 def dashboard(request):

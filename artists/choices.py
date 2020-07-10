@@ -7,7 +7,18 @@ agent_choices = {
 }
 
 artists_choices = {
-    'Coldplay' : 'Coldplay'
+    'Arctic Monkeys' : 'Arctic Monkeys',
+    'Martin Garrix' : 'Martin Garrix',
+    'Florence and The Machine' : 'Florence and The Machine',
+    'Thom Yorke' : 'Thom Yorke',
+    'Dua Lipa' : 'Dua Lipa',
+    'Queens Of The Stone Age' : 'Queens Of The Stone Age',
+    'Idles' : 'Idles',
+    'Foo Fighters' : 'Foo Fighters',
+    'Hayley Williams' : 'Haley Williams',
+    'The Killers' : 'The Killers',
+    'Hot Chip' : 'Hot Chip',
+    'Tiesto' : 'Tiesto',
 }
 
 price_choices = {

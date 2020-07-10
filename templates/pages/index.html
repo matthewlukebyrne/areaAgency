@@ -8,17 +8,19 @@
 {% block title %} | Home Area {% endblock %}
 
 {% block content %}
-<!-- Showcase -->
-<img src="{% static 'img/showcase.jpg' %}" alt="" />
+
+<!-- Alerts Error Function -->
+{% include 'partials/_alerts.html' %}
+
+<!-- Showcase and Search Area -->
 <section id="showcase">
-  <div class="container text-center bg-dark">
-    <div class="home-search p-5">
-      <div class="overlay p-5">
+  <div class="container bg-success rounded">
+    <div class="home-search p-4">
+      <div class="overlay p-4">
         <h1 class="display-4 mb-4">
-          This will be the front end. <br> What the user sees.
+          This is Area Agency. <br> A website for promoters.
         </h1>
-        <p class="lead">World class performers ready to be booked at the touch of your fingertips from all over the
-          world. <br> We are Area Agency.</p>
+        <p class="lead">World class artists ready to be booked at the touch of your fingertips.</p>
         <div class="search">
           <form action="{% url 'search' %}">
             <!-- Keyword and City Search-->
@@ -54,36 +56,39 @@
                 </select>
               </div>
             </div>
-            <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+            <button class="btn btn-secondary btn-block mt-4" type="submit">Search</button>
           </form>
         </div>
       </div>
     </div>
 </section>
 
-<section id="services" class="py-5 bg-secondary text-white">
-  <div class="container">
-    <div class="row text-center">
+<!-- Services of COVID, Contracts Etc -->
+<section id="services" class="py-2 bg-secondary text-white">
+  <div class="container p-4">
+    <div class="row">
       <div class="col-md-4">
         <i class="fas fa-user-nurse fa-4x mr-4"></i>
-        <hr>
-        <h3></h3>
-        <div class="lead">Our response to COVID and the future.</div>
+        <hr class="bg-white">
+        <p class="">What is happening with Area Agency and the COVID situation? We have our artists and promoters
+          covered with our comprehensive packages.</p>
       </div>
       <div class="col-md-4">
         <i class="fas fa-users fa-4x mr-4"></i>
-        <hr>
-        <h3></h3>
-        <p class="lead">A stellar line up of acts.</p>
+        <hr class="bg-white">
+        <p>The artist of Area Agency. We have stellar calibre of acts from all over the world. We are always on the move
+          with expansion and hoping to to make more connections soon!</p>
       </div>
       <div class="col-md-4">
         <i class="fas fa-file-contract fa-4x mr-4"></i>
-        <hr>
-        <h3></h3>
-        <p class="lead text-center">Contracts ready at your disposal.</p>
+        <hr class="bg-white">
+        <p>Promoters are worried about the expenses. We have extensive contracts and negoations to be the middle person
+          and create balance between.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Bg Image (Should be working with overlay but thanks to Django its a no.) -->
+<img src="{% static 'img/showcase.jpeg' %}" alt="" />
 {% endblock %}

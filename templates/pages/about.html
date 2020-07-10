@@ -12,8 +12,8 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"> -->
-          <!-- Urls.py uses this -->
-          <!-- <a href="{% url 'index' %}">
+<!-- Urls.py uses this -->
+<!-- <a href="{% url 'index' %}">
             <i class="fas fa-home"></i></a>
         </li>
         <li class="breadcrumb-item active"> Agents</li>
@@ -26,12 +26,9 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 text-center">
-        <img src="{% static 'img/about.gif' %}" alt="">
-        <p class="mt-5">Area Agency is an artist management company based in Los Angeles, California. With a history of
-          working with international acts, we have developed a reputation as an artist-friendly company whose main focus
-          is always on providing high quality performers with a platform to develop their careers and to assist them in
-          reaching a larger audience internationally. <br>
-          <hr>
+        <img src="{% static 'img/about.gif' %}" alt="" class="rounded">
+        <p class="mt-5">Area Agency is an artist management company based in Los Angeles, California. This was a passion project created with craftsmanship. We wanted to have a place that is a point for people to book as many acts as they want and have a dashboard viewing this acts. <br>
+          <hr class="bg-dark">
           Our approach to every artist we work with is to offer a broad representation service which covers each element
           of the artist’s recording and performing career including executive production of the recording process,
           negotiation and development of relationships with record labels, digital distributors, publishing companies,
@@ -42,11 +39,11 @@
         {% if mvp_agents %}
         {% for agent in mvp_agents %}
         <div class="card">
-          <img class="card-img-top img-thumbnail" src="{{ agent.photo.url }}" alt="Seller of the month">
+          <img class="card-img-top" src="{{ agent.photo.url }}" alt="Seller of the month">
           <div class="card-body">
-            <h5 class="card-title">Agent Of The Month</h5>
+            <h5 class="card-title">Area Agent Of The Month</h5>
             <h6 class="text-secondary">{{ agent.name }}</h6>
-            <p class="card-text">{{agent.description}}
+            <p class="card-text">{{ agent.description }}
             </p>
           </div>
         </div>
@@ -64,20 +61,20 @@
 <!-- Database information is "agent.value" -->
 
 <!-- Team -->
-<section id="team" class="py-5">
+<section id="team" class="py-5 mb-5">
   <div class="container">
-    <div class="row text-center">
+    <div class="row">
       {% if agents %}
       {% for agent in agents %}
       <div class="col-md-4">
-        <img src="{{ agent.photo.url }}" alt="" class="mb-5 img-thumbnail">
-        <h4>{{agent.name}}</h4>
+        <img src="{{ agent.photo.url }}" alt="agent_photos">
+        <h4 class="pt-3">{{ agent.name }}</h4>
         <p class="text-success">
-          <i class="fas fa-award text-success mb-3"></i> Area Agent since {{agent.hire_date | timesince }}</p>
+          <i class="fas fa-award text-success"></i> Area Agent since {{ agent.hire_date | timesince }}</p>
         <p>
-          <i class="fas fa-phone"></i> {{agent.phone}} <br>
-          <i class="fas fa-envelope-open"></i> {{agent.email}}</p>
-        <hr>
+          <i class="fas fa-phone"></i> {{ agent.phone }} <br>
+          <i class="fas fa-envelope-open"></i> {{ agent.email }}</p>
+        <hr class="bg-dark">
       </div>
       {% endfor %}
       {% else %}
