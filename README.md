@@ -1,9 +1,11 @@
 # areaAgency
 College project version for Area Agency system.
 
-![area-agency](1.PNG)
-![area-agency](2.PNG)
-![area-agency](3.PNG)
+![area-agency](final_images/5.PNG)
+![area-agency](final_images/4.PNG)
+![area-agency](final_images/2.PNG)
+![area-agency](final_images/9.PNG)
+
 
 # Documentation
 https://www.djangoproject.com/ <br>
