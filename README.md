@@ -1,16 +1,16 @@
 # areaAgency
-College project version for Area Agency system.
+College project version for Area Agency application. A promoters niche website allowing you to book and enquire musical talent.
 
 # Documentation
 https://www.djangoproject.com/ <br>
 https://jinja.palletsprojects.com/en/2.11.x/
 
 # Tools and Technologies Used
-Django
-Postgres (phpMyAdmin)
-Bootstrap4
-JQuery
-SCSS Files
+Django <br>
+Postgres (phpMyAdmin) <br>
+Bootstrap4 <br>
+JQuery <br>
+SCSS Files <br>
 
 # Installation and Used Commands
 <code>python manage.py runserver</code>
@@ -23,7 +23,7 @@ SCSS Files
 -Creates a new pages app
 
 <code>python manage.py collectstatic</code>
-# shows a static folder in the root
+-shows a static folder in the root
 
 <code>python manage.py startapp artists</code>
 -created a artists app (needs a urls.py)
@@ -39,7 +39,14 @@ SCSS Files
 
 
 # Deployment Stage 
-Coming!
-https://www.nginx.com/
-https://www.digitalocean.com/
-https://gunicorn.org/
+Coming! <br>
+https://www.nginx.com/ <br>
+https://www.digitalocean.com/ <br>
+https://gunicorn.org/ <br>
+
+# Image Bank
+
+![area-agency](final_images/4.PNG)
+![area-agency](final_images/5.PNG)
+![area-agency](final_images/3.PNG)
+![area-agency](final_images/2.PNG)
