@@ -6,11 +6,11 @@ https://www.djangoproject.com/ <br>
 https://jinja.palletsprojects.com/en/2.11.x/
 
 # Tools and Technologies Used
-Django
-Postgres (phpMyAdmin)
-Bootstrap4
-JQuery
-SCSS Files
+Django <br>
+Postgres (phpMyAdmin) <br>
+Bootstrap4 <br>
+JQuery <br>
+SCSS Files <br>
 
 # Installation and Used Commands
 <code>python manage.py runserver</code>
@@ -23,7 +23,7 @@ SCSS Files
 -Creates a new pages app
 
 <code>python manage.py collectstatic</code>
-# shows a static folder in the root
+-shows a static folder in the root
 
 <code>python manage.py startapp artists</code>
 -created a artists app (needs a urls.py)
