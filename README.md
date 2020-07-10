@@ -1,5 +1,5 @@
 # areaAgency
-College project version for Area Agency system.
+College project version for Area Agency application. A promoters niche website allowing you to book and enquire musical talent.
 
 # Documentation
 https://www.djangoproject.com/ <br>
