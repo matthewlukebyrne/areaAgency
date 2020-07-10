@@ -17,7 +17,7 @@
   <div class="container bg-success rounded">
     <div class="home-search p-4">
       <div class="overlay p-4 rounded">
-        <h1 class="display-4 mb-4 p-1">
+        <h1 class="display-2 mb-4 p-1">
           This is Area Agency. <br> A website for promoters.
         </h1>
         <p class="lead">World class artists ready to be booked at the touch of your fingertips.</p>
@@ -37,7 +37,7 @@
             <div class="form-row">
               <div class="col-md-6 mb-3">
                 <select name="title" class="form-control">
-                  <option selected="true" disabled="enabled">Talent (All)</option>
+                  <option selected="true" disabled="enabled">Talent</option>
                   {% for key, value in artists_choices.items %}
                   <!-- Messy code for keeping values in search -->
                   <option value="{{key}}" {% if key == values.title %} selected {% endif %}>{{ value }}</option>
@@ -47,7 +47,7 @@
               <!-- Fee Search -->
               <div class="col-md-6 mb-3">
                 <select name="price" class="form-control">
-                  <option selected="true" disabled="disabled">Max Fee (All)</option>
+                  <option selected="true" disabled="disabled">Max Fee</option>
                   {% for key, value in price_choices.items %}
                   <!-- Messy code for keeping values in search -->
                   <option value="{{key}}" {% if key == values.price %} selected {% endif %}>{{ value }}</option>

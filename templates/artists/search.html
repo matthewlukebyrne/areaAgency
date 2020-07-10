@@ -9,7 +9,7 @@
   <div class="container">
     <div class="row text-center">
       <div class="col-md-12">
-        <h1 class="display-4">Search Our Roster</h1>
+        <h1 class="display-3 pb-2">Search Our Roster</h1>
         <form action="{% url 'search' %}">
           <!-- Keyword and City Search-->
           <!-- <div class="form-row">
@@ -26,7 +26,7 @@
           <div class="form-row">
             <div class="col-md-6 mb-3">
               <select name="title" class="form-control">
-                <option selected="true" disabled="enabled">Talent (All)</option>
+                <option selected="true" disabled="enabled">Talent</option>
                 {% for key, value in artists_choices.items %}
                 <!-- Messy code for keeping values in search -->
                 <option value="{{key}}" {% if key == values.title %} selected {% endif %}>{{ value }}</option>
@@ -36,7 +36,7 @@
             <!-- Fee Search with Loop -->
             <div class="col-md-6 mb-3">
               <select name="price" class="form-control">
-                <option selected="true" disabled="disabled">Max Fee (All)</option>
+                <option selected="true" disabled="disabled">Max Fee</option>
                 {% for key, value in price_choices.items %}
                 <!-- Messy code for keeping values in search -->
                 <option value="{{key}}" {% if key == values.price %} selected {% endif %}>
