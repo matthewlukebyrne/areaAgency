@@ -163,3 +163,9 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'matthewlukebyrne@gmail.com'
 EMAIL_HOST_PASSWORD = 'Elipsis_7'
 EMAIL_USE_TLS = True
+
+# Checks for production settings on the server
+try:
+    from .local_settings import *
+except ImportError:
+    pass
