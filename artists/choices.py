@@ -1,9 +1,14 @@
 # Creation of dictionaries so we can search through the data!
 
 agent_choices = {
-    'Lacey Evans' : 'Lacey Evans',
-    'Brooke Wilson' : 'Brooke Wilson',
-    'Alexa Harris' : 'Alexa Harris',
+    'Megan Cassidy' : 'Megan Cassidy',
+    'Sandra Garvey' : 'Sandra Garvey',
+    'Jessica Pritzel' : 'Jessica Pritzel',
+    'John McClaine' : 'John McClaine',
+    'Hugh Lawrie' : 'Denis Lawford',
+    'Alicia Taylor' : 'Alicia Taylor',
+    'Darren Gibson' : 'Darren Gibson',
+    'Steve Lawson' : 'Steve Lawson',
 }
 
 artists_choices = {
