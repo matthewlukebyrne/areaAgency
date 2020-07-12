@@ -34,14 +34,15 @@ def contact(request):
         # Save
         contact.save()
 
-        # Send Email to Gmail Config
-        send_mail(
-            'Artist Roster Enquiry | Area Agency',
-            'There has been enquiry for ' + title + '. Sign into the Dashboard panel of Area Agency for more info!',
-            'matthewlukebyrne@gmail.com',
-            [agent_email, 'matthewlukebyrne@gmail.com'],
-            fail_silently=False
-        )
+        #  CANT HAVE THIS FEATURE ON LIVE SERVER OF AREAAGENCY.LIVE (SENDS ME BACK A 500 RESPONSE!)
+        # # Send Email to Gmail Config
+        # send_mail(
+        #     'Artist Roster Enquiry | Area Agency',
+        #     'There has been enquiry for ' + title + '. Sign into the Dashboard panel of Area Agency for more info!',
+        #     'matthewlukebyrne@gmail.com',
+        #     [agent_email, 'matthewlukebyrne@gmail.com'],
+        #     fail_silently=False
+        # )
 
         # Message Success with a redirect back to artists page!
         messages.success(request, 'Your request has been notifed! Our Area Agents will get back to you soon...')

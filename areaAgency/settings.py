@@ -29,7 +29,7 @@ SECRET_KEY = '89$7)515x#9s^uzgdsm*rsk&+%4_^-p!s9szub-a72e+x@eq3%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['46.101.236.97', 'areaagency.live', 'www.areaagency.live']
 
 # Django run a series of Apps
 # Application definition
@@ -157,9 +157,17 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 
-# GMAIL Email Configigurations
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'matthewlukebyrne@gmail.com'
-EMAIL_HOST_PASSWORD = 'Elipsis_7'
-EMAIL_USE_TLS = True
+# # GMAIL Email Configigurations
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'matthewlukebyrne@gmail.com'
+# EMAIL_HOST_PASSWORD = '********'
+# EMAIL_USE_TLS = True
+
+#Push server local_settings
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+
