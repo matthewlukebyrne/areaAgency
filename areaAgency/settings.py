@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '89$7)515x#9s^uzgdsm*rsk&+%4_^-p!s9szub-a72e+x@eq3%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['46.101.236.97', 'areaagency.live', 'www.areaagency.live']
 
