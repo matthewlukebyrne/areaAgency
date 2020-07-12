@@ -164,8 +164,9 @@ MESSAGE_TAGS = {
 # EMAIL_HOST_PASSWORD = '********'
 # EMAIL_USE_TLS = True
 
+#Push server local_settings
 try:
-    from .localsettings import *
+    from .local_settings import *
 except ImportError:
     pass
 
