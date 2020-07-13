@@ -6,7 +6,7 @@ http://areaagency.live/
 
 ![area-agency](final_images/10.PNG)
 
-# Documentation
+# Documentation on Django + Template Syntax
 https://www.djangoproject.com/ <br>
 https://jinja.palletsprojects.com/en/2.11.x/
 
