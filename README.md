@@ -42,10 +42,11 @@ SCSS Files <br>
 
 
 # Deployment Stage 
-Coming! <br>
 https://www.nginx.com/ <br>
 https://www.digitalocean.com/ <br>
 https://gunicorn.org/ <br>
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-16-04
 
 # Image Bank
 
