@@ -94,15 +94,15 @@ WSGI_APPLICATION = 'areaAgency.wsgi.application'
 
 
 # Updating database to postgres
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'areaCollege',
-        'USER': 'postgres',
-        'PASSWORD': 'Elipsis_7',
-        'HOST': 'localhost'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'areaCollege',
+#         'USER': 'postgres',
+#         'PASSWORD': '********************',
+#         'HOST': 'localhost'
+#     }
+# }
 
 
 # Password validation
@@ -156,13 +156,6 @@ MEDIA_URL = '/media/'
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
-
-# # GMAIL Email Configigurations
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'matthewlukebyrne@gmail.com'
-# EMAIL_HOST_PASSWORD = '********'
-# EMAIL_USE_TLS = True
 
 #Push server local_settings
 try:
